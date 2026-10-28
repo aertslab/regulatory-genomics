@@ -1,0 +1,21 @@
+name: atac-r
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.4
+  - r-irkernel
+  - bioconductor-diffbind
+  - bioconductor-deseq2
+  - bioconductor-apeglm
+  - bioconductor-chipseeker
+  - bioconductor-txdb.hsapiens.ucsc.hg19.knowngene
+  - bioconductor-txdb.hsapiens.ucsc.hg38.knowngene
+  - bioconductor-org.hs.eg.db
+  - bioconductor-txdb.mmusculus.ucsc.mm10.knowngene
+  - bioconductor-org.mm.eg.db
+  - r-upsetr
+  - bioconductor-rtracklayer
+  - bioconductor-csaw
+  - r-tidyverse
+  - r-pheatmap

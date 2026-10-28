@@ -1,0 +1,23 @@
+name: atac-cli
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - pip
+  - sra-tools
+  - fastqc
+  - fastp
+  - multiqc
+  - bowtie2
+  - samtools
+  - picard
+  - macs3
+  - bedtools
+  - subread
+  - deeptools
+  - ucsc-bedgraphtobigwig
+  - ataqv
+  - seqkit        # scripts only: extract the chr19 read pairs of part 1
+  - pip:
+      - bash_kernel
