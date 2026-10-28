@@ -5,7 +5,7 @@ In this practical we analyse the chromatin accessibility of single nuclei from t
 > Bravo González-Blas C, et al. *Single-cell spatial multi-omics and deep learning dissect enhancer-driven gene regulatory networks in liver zonation.* Nature Cell Biology (2024).
 > https://doi.org/10.1038/s41556-023-01316-4
 
-We use the ATAC part of two 10x Multiome samples (GEO [GSE218468](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE218468)): Mouse_4, prepared with the 10x nuclei isolation protocol, and Mouse_5, prepared with the NST protocol, about 11,000 cells in total. Multiome measures ATAC and RNA in the same nucleus, so the cell types and hepatocyte zones annotated from the RNA in the paper give us reliable labels to check the ATAC analysis. The [single-nucleus RNA-seq practical](../single-nucleus-rna-seq/index.md) analyses single-nucleus RNA-seq data of the same study.
+We use the ATAC part of two 10x Multiome samples (GEO [GSE218468](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE218468)): Mouse_4, prepared with the 10x nuclei isolation protocol, and Mouse_5, prepared with the NST protocol, about 11,000 cells in total. Multiome measures ATAC and RNA in the same nucleus, so the cell types and hepatocyte zones annotated from the RNA in the paper give us reliable labels to check the ATAC analysis. The [single-nucleus RNA-seq practical](../single-nucleus-rna-seq/index.md) analyses single-nucleus RNA-seq data of the same study, and the [MPRA practical](../mpra/index.md) tests which of the accessible regions are active enhancers.
 
 **Research questions:**
 
