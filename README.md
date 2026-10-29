@@ -13,9 +13,14 @@ topics/<topic>/           one folder per topic
     index.md              topic overview (paper, data, software)
     *.ipynb               the notebooks (with saved outputs)
     scripts/              scripts that build/execute the notebooks and run long steps
+    scripts/README.md     (some topics) how to prepare the course data and install it on the teaching server
     data/                 working directory of the notebooks (not in git)
+    course_data/          (some topics) input data prepared by the teachers: copied as a whole to the teaching server (not in git)
+    course_data_build/    (some topics) downloads and intermediate files, only needed to rebuild course_data (not in git)
 archive/                  old material, not published
 ```
+
+The topic pages (`index.md`) are part of the website and written for students; notes for teachers go in `scripts/README.md`, which is not published.
 
 ## Building the website locally
 

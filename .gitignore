@@ -1,5 +1,9 @@
 # Data of each topic: working directory of the notebooks (fastq, bam, genome, counts, logs, ...)
 topics/*/data/
+# Course data provided to the students (genome, reads, pre-generated results), if not on the shared teaching folder
+topics/*/course_data/
+# Downloads and intermediate files, only needed to rebuild course_data
+topics/*/course_data_build/
 
 # Website build output (Jupyter Book)
 _build/

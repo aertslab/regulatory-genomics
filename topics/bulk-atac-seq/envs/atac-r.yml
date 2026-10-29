@@ -1,0 +1,18 @@
+# Same packages as the mamba create command at the start of part 3 (keep the two in sync).
+name: atac-r
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.4
+  - r-irkernel
+  - bioconductor-diffbind
+  - bioconductor-deseq2
+  - bioconductor-apeglm
+  - bioconductor-chipseeker
+  - bioconductor-txdb.hsapiens.ucsc.hg38.knowngene
+  - bioconductor-org.hs.eg.db
+  - r-upsetr
+  - r-ggplot2
+  - r-pheatmap
+  - homer         # part 3: known-motif enrichment (findMotifsGenome.pl with the hg38 fasta)

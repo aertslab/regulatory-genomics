@@ -1,0 +1,24 @@
+# Same packages as the mamba create command at the start of part 1 (keep the two in sync).
+name: atac-cli
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - pip
+  - sra-tools
+  - fastqc
+  - fastp
+  - multiqc
+  - bowtie2
+  - samtools
+  - picard
+  - macs3
+  - bedtools
+  - subread
+  - deeptools
+  - ucsc-bedgraphtobigwig
+  - ataqv
+  - seqkit        # used by the scripts: extract the chr17 read pairs of part 1
+  - pip:
+      - bash_kernel
