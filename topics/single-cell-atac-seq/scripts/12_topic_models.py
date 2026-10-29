@@ -1,7 +1,7 @@
 """Pre-compute the pycisTopic topic models that part 2 loads.
 
-Uses the cells and consensus peaks written by part 1 (copied to data/data_generated/).
-Submit with scripts/12_topic_models.sh; writes data/data_generated/topic_models.pkl.
+Uses the cells and consensus peaks written by part 1 (copied to course_data/data_generated/).
+Submit with scripts/12_topic_models.sh; writes course_data/data_generated/topic_models.pkl.
 """
 import os
 import pickle
@@ -11,9 +11,9 @@ import pandas as pd
 from pycisTopic.cistopic_class import create_cistopic_object_from_fragments, merge
 from pycisTopic.lda_models import run_cgs_models_mallet
 
-SC = str(Path(__file__).resolve().parents[1] / "data")
+SC = str(Path(__file__).resolve().parents[1] / "course_data")
 GEN = f"{SC}/data_generated"
-MALLET = f"{SC}/software/Mallet-202108/bin/mallet"
+MALLET = str(Path(__file__).resolve().parents[1] / "course_data_build" / "software" / "Mallet-202108" / "bin" / "mallet")  # from 01_download_sc.sh
 N_CPU = int(os.environ.get("SLURM_CPUS_PER_TASK", 16))
 TMP = os.path.join(os.environ.get("TMPDIR", "/tmp"), "mallet")
 os.makedirs(TMP, exist_ok=True)

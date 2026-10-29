@@ -3,15 +3,17 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
 #SBATCH --time=04:00:00
-#SBATCH --output=data/logs/%x_%j.log
+#SBATCH --output=course_data_build/logs/%x_%j.log
 # Liver multiome (GSE218468): ATAC fragments of Mouse_4 and Mouse_5, the published count matrices,
-# and the few mm10 annotation files the notebooks use. Writes data/raw, data/fragments and data/genome.
+# and the few mm10 annotation files the notebooks use. Writes course_data/fragments, course_data/genome and the ATAC count
+# matrix in course_data/raw (used by part 1); the original GEO fragment files, the RNA count matrix and Mallet go to course_data_build.
 #
 # Run from the topic folder (single-cell-atac-seq), with an environment that has wget, bgzip and tabix
 # (e.g. atac-cli of the bulk ATAC-seq practical):
-#     mkdir -p data/logs && bash scripts/01_download_sc.sh     (or: sbatch scripts/01_download_sc.sh)
+#     mkdir -p course_data_build/logs && bash scripts/01_download_sc.sh     (or: sbatch scripts/01_download_sc.sh)
 set -euo pipefail
-D=$PWD/data
+D=$PWD/course_data        # used by the notebooks
+X=$PWD/course_data_build  # only needed to make them
 
 # mm10 annotation: chrom sizes, blacklist, GENCODE vM25 GTF, TSS of protein-coding genes
 mkdir -p $D/genome && cd $D/genome
@@ -25,15 +27,15 @@ zcat gencode.vM25.annotation.gtf.gz | awk -F'\t' '$3=="gene" && $9 ~ /gene_type 
     print $1"\t"tss"\t"tss+1"\t"g"\t.\t"$7 }' | sort -k1,1 -k2,2n > mm10_tss_protein_coding.bed
 
 # GEO files
-mkdir -p $D/raw && cd $D/raw
 B=https://ftp.ncbi.nlm.nih.gov/geo/series/GSE218nnn/GSE218468/suppl
+mkdir -p $D/raw && wget -q -c -P $D/raw $B/GSE218468_multiome_atac_counts.tsv.gz
+mkdir -p $X/raw && cd $X/raw
 for f in GSE218468_TEW_043783_523d9c_Multiome_Liver_10xprotocol_fragments.tsv.gz \
          GSE218468_TEW_ebb273_b33e6f_Multiome_Liver_CTRL_NSTprotocol_fragments.tsv.gz \
-         GSE218468_multiome_rna_counts.tsv.gz \
-         GSE218468_multiome_atac_counts.tsv.gz; do
+         GSE218468_multiome_rna_counts.tsv.gz; do
     wget -q -c $B/$f
 done
-ls -la
+ls -la $X/raw $D/raw
 # GEO serves plain gzip; tabix needs BGZF. Recompress under short names and index.
 F=$D/fragments; mkdir -p $F
 zcat GSE218468_TEW_043783_523d9c_Multiome_Liver_10xprotocol_fragments.tsv.gz | bgzip -@ 4 > $F/Mouse_4_10x.fragments.tsv.gz
@@ -42,7 +44,7 @@ for f in $F/*.fragments.tsv.gz; do tabix -p bed $f; done
 ls -la $F
 
 # Mallet, for pycisTopic topic modelling
-mkdir -p $D/software && cd $D/software
+mkdir -p $X/software && cd $X/software
 wget -q -c https://github.com/mimno/Mallet/releases/download/v202108/Mallet-202108-bin.tar.gz
 [ -d Mallet-202108 ] || tar -xzf Mallet-202108-bin.tar.gz
 echo DONE

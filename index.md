@@ -6,7 +6,7 @@ This website contains the practicals of the course regulatory genomics. Each top
 
 - [Bulk RNA-seq](topics/bulk-rna-seq/index.md): can the transcription factors FOXA1 and HNF4A activate liver genes in a blood cell line? From sequencing reads to differential expression and biological interpretation.
 
-- [Bulk ATAC-seq](topics/bulk-atac-seq/index.md): how does chromatin accessibility in the liver change in a mouse model of diabetes and high-fat diet? From sequencing reads to peaks, quality control, consensus peaks and differential accessibility with replicates (MACS3, DiffBind, DESeq2).
+- [Bulk ATAC-seq](topics/bulk-atac-seq/index.md): which regions do the liver transcription factors FOXA1 and HNF4A open in a blood cell line (the study of the bulk RNA-seq practical)? From sequencing reads to peaks, quality control, consensus peaks, differential accessibility with replicates (MACS3, DiffBind, DESeq2), motifs (HOMER) and the link with gene expression.
 
 - [Single-nucleus RNA-seq](topics/single-nucleus-rna-seq/index.md): how can we identify the different cell populations of the mouse liver and investigate hepatocyte transcriptional heterogeneity? From gene-expression counts to quality control, clustering, cell-type annotation and liver zonation.
 

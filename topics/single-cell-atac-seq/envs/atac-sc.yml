@@ -1,3 +1,4 @@
+# Same packages as the mamba create and pip install commands at the start of part 1 (keep the two in sync).
 name: atac-sc
 channels:
   - conda-forge

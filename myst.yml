@@ -14,6 +14,8 @@ project:
     - archive/**
     - tools/**
     - topics/*/data/**
+    - topics/*/course_data/**
+    - topics/*/course_data_build/**
     - topics/*/scripts/**
     - topics/*/envs/**
     - README.md

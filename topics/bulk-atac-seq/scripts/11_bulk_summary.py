@@ -1,7 +1,7 @@
-"""Collect the per-sample QC of the bulk pipeline (10_bulk_pipeline.sh) into data/data_generated/qc_summary.tsv,
-and put the chr19 FASTQs of the two part-1 samples into data/fastq_chr19/.
+"""Collect the per-sample QC of the bulk pipeline (10_bulk_pipeline.sh, in course_data_build/pipeline) into
+course_data/data_generated/qc_summary.tsv, and move the chr17 FASTQs of the two part-1 samples to course_data/fastq_chr17/.
 
-Run with the atac-cli python after all 12 array tasks have finished:
+Run with the atac-cli python after all 4 array tasks have finished:
     python scripts/11_bulk_summary.py
 """
 import gzip
@@ -10,8 +10,10 @@ import shutil
 import subprocess
 from pathlib import Path
 
-BULK = Path(__file__).resolve().parents[1] / "data"
-PART1_SAMPLES = ["SCD_3", "STZ_HFD_3"]
+TOPIC = Path(__file__).resolve().parents[1]
+BULK = TOPIC / "course_data"           # used by the notebooks
+BUILD = TOPIC / "course_data_build"    # pipeline outputs and sample sheet
+PART1_SAMPLES = ["FOXA1HNF4A_U1", "FOXA1HNF4A_I1"]
 
 
 def count(*args):
@@ -19,7 +21,7 @@ def count(*args):
 
 
 def qc(sample):
-    d = BULK / "data_generated" / sample
+    d = BUILD / "pipeline" / sample
     fastp = json.load(open(d / f"{sample}.fastp.json"))["summary"]
     pairs = fastp["before_filtering"]["total_reads"] // 2
     kept = fastp["after_filtering"]["total_reads"] / fastp["before_filtering"]["total_reads"]
@@ -56,7 +58,7 @@ def qc(sample):
     }
 
 
-samples = [l.split("\t")[0] for l in (BULK / "samplesheet.tsv").read_text().splitlines()[1:]]
+samples = [l.split("\t")[0] for l in (BUILD / "samplesheet.tsv").read_text().splitlines()[1:]]
 rows = [qc(s) for s in samples]
 with open(BULK / "data_generated" / "qc_summary.tsv", "w") as out:
     out.write("\t".join(rows[0]) + "\n")
@@ -64,11 +66,11 @@ with open(BULK / "data_generated" / "qc_summary.tsv", "w") as out:
         out.write("\t".join(str(v) for v in r.values()) + "\n")
 print((BULK / "data_generated" / "qc_summary.tsv").read_text())
 
-fq = BULK / "fastq_chr19"
+fq = BULK / "fastq_chr17"
 fq.mkdir(exist_ok=True)
 for s in PART1_SAMPLES:
     for r in ("R1", "R2"):
-        src = BULK / "data_generated" / s / f"{s}_chr19_{r}.fastq.gz"
+        src = BUILD / "pipeline" / s / f"{s}_chr17_{r}.fastq.gz"
         if src.exists():
             shutil.move(src, fq / src.name)
 print(sorted(p.name for p in fq.iterdir()))

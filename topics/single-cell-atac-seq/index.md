@@ -1,3 +1,19 @@
+---
+downloads:
+  - file: scripts/01_download_sc.sh
+    title: 01_download_sc.sh
+    filename: 01_download_sc.sh
+  - file: scripts/13_annotations.py
+    title: 13_annotations.py
+    filename: 13_annotations.py
+  - file: scripts/12_topic_models.sh
+    title: 12_topic_models.sh
+    filename: 12_topic_models.sh
+  - file: scripts/12_topic_models.py
+    title: 12_topic_models.py
+    filename: 12_topic_models.py
+---
+
 # Single-cell ATAC-seq
 
 In this practical we analyse the chromatin accessibility of single nuclei from the mouse liver:
@@ -15,24 +31,33 @@ We use the ATAC part of two 10x Multiome samples (GEO [GSE218468](https://www.nc
 
 The practical consists of four notebooks:
 
-1. [Part 1: quality control and preprocessing](part_1_qc_preprocessing.ipynb): fragment files, per-cell QC (fragments, TSS enrichment, fragment sizes), doublets, cell-type and zone annotations checked with gene activity, pseudobulk peak calling and a consensus peak set (SnapATAC2, MACS3).
+1. [Part 1: quality control and preprocessing](part_1_qc_preprocessing.ipynb): fragment files, per-cell QC (fragments, TSS enrichment, fragment sizes), doublets, cell-type and zone annotations checked with gene activity, clustering on genome-wide bins without the annotations, pseudobulk peak calling per cluster and a consensus peak set (SnapATAC2, MACS3).
 2. [Part 2: topic modelling with pycisTopic](part_2_pycistopic.ipynb): topic models, model selection, batch correction (Harmony), clustering and UMAP, cell-type and zonation topics.
 3. [Part 3: dimensionality reduction and clustering with SnapATAC2](part_3_snapatac2.ipynb): spectral embedding, batch correction, clustering, and a comparison with pycisTopic.
 4. [Part 4: differentially accessible regions](part_4_dars.ipynb): cell-type DARs, and pericentral versus periportal DARs with SnapATAC2 (per mouse) and pycisTopic (imputed accessibility), compared with each other and with known zonated genes, pseudobulk coverage tracks per cell type and zone (pycisTopic) to look at them in IGV; a comparison with the paper and the conclusion.
 
 ## Software
 
-All four notebooks use one mamba environment, `atac-sc` (`envs/atac-sc.yml`), with SnapATAC2, pycisTopic, scanpy and MACS3; the kernel is "Python (atac-sc)". The commands to create it and register the kernel are given at the start of part 1. Part 2 also uses [Mallet](https://mimno.github.io/Mallet/) for topic modelling, stored in `data/software`; it needs Java, which is included in the environment.
+All four notebooks use one mamba environment, `atac-sc`, with SnapATAC2, pycisTopic, scanpy and MACS3; the kernel is "Python (atac-sc)". The commands to create it and register the kernel are given at the start of part 1. Part 2 also uses [Mallet](https://mimno.github.io/Mallet/) for topic modelling, but only if you train models yourself; the notebook then downloads it into `data`. It needs Java, which is included in the environment.
 
 ## Data
 
-All data is stored in the folder `data`, next to the notebooks; the notebooks write their results to `data/results/part_N`. The notebooks show the download commands as text (so they are not run by accident); the data are built by the scripts in `scripts/`, run from this folder (each script has a Slurm header, and the usage in its first lines):
+You work in the folder `data`, next to the notebooks: each notebook writes everything it makes to `data/part_N`. The input data (the **course data**) are already prepared for you on the teaching server, in the read-only folder `/data/teachers/data/scATAC/liver_multiome`; the notebooks find them automatically, so you don't need to copy or download anything. You need about 9 GB of disk space in `data` (most of it for the imported samples of part 1 and the pseudobulk tracks of part 4).
+
+If you run the notebooks somewhere else, they look for the course data in a folder `course_data` next to the notebooks; see below.
+
+### Preparing the course data yourself
+
+To run the notebooks somewhere else than on the teaching server (for example on your own computer or on the VSC), build the course data yourself, in a folder `course_data` next to the notebooks. The scripts put the downloads (the original GEO files, Mallet, the annotation loom) in a second folder, `course_data_build`, which the notebooks don't need. Download the scripts below from the download menu at the top of this page, put them in a folder `scripts` next to the notebooks, and run them from the folder of the notebooks (each script has a Slurm header, and the usage in its first lines):
+
+`01_download_sc.sh` needs `bgzip` and `tabix`, which are in the `atac-cli` environment of the [bulk ATAC-seq practical](../bulk-atac-seq/index.md) (or: `mamba install -n atac-sc -c bioconda htslib`); the other scripts run with `atac-sc`.
 
 | Script | Does | Time |
 |---|---|---|
-| `01_download_sc.sh` | fragment files (recompressed with bgzip and indexed), the published count matrices, mm10 annotation files and Mallet | ~30 min |
-| `13_annotations.py` | `data/annotations/cell_annotations.tsv` from the public Scope loom of the paper (download instructions in the script) | minutes |
-| part 1 | consensus peaks, cell list and peak matrix; copy `liver_peaks.h5ad`, `consensus_peaks.bed` and `cells.tsv` to `data/data_generated` | ~45 min |
-| `12_topic_models.sh` | pycisTopic models with 10 to 50 topics (`data/data_generated/topic_models.pkl`) | ~3 h (16 CPU) |
+| `01_download_sc.sh` | fragment files (recompressed with bgzip and indexed), the paper's ATAC count matrix, mm10 annotation files; Mallet (for `12_topic_models.sh`) | ~30 min |
+| `13_annotations.py` | `course_data/annotations/cell_annotations.tsv` and `paper_cells.tsv` from the public Scope loom of the paper (download instructions in the script) | minutes |
+| part 1 | clusters, consensus peaks, cell list and peak matrix; copy `liver_peaks.h5ad`, `consensus_peaks.bed`, `cells.tsv` and `pseudobulk_peaks/` from `data/part_1` to `course_data/data_generated` | ~1 h |
+| `12_topic_models.sh` | pycisTopic models with 10 to 50 topics (`course_data/data_generated/topic_models.pkl`) | ~3 h (16 CPU) |
+| parts 2 and 3 | copy `cistopic_obj.pkl` from `data/part_2` and `liver_peaks_snapatac2.h5ad` from `data/part_3` to `course_data/data_generated` | |
 
-`data/data_generated` also holds the results of each notebook that the next one needs (imported samples, pseudobulk peaks, cisTopic object, SnapATAC2 matrix), so every notebook can also be run on its own. The notebooks need about 12 GB of disk space, plus about 5 GB for the pseudobulk tracks of part 4.
+Building the cisTopic object in part 2 needs about 42 GB of memory. On the teaching server it is provided, so that part 3 and 4 can also run without it.
