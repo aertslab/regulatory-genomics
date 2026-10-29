@@ -6,8 +6,6 @@ version: 1
 project:
   title: Regulatory genomics
   description: Practicals for the course regulatory genomics.
-  authors:
-    - name: Seppe De Winter
 
   # Notebooks are rendered with their saved outputs, they are not executed during the build.
   exclude:
