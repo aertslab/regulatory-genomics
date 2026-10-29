@@ -6,8 +6,6 @@ version: 1
 project:
   title: Regulatory genomics
   description: Practicals for the course regulatory genomics.
-  authors:
-    - name: Seppe De Winter
 
   # Notebooks are rendered with their saved outputs, they are not executed during the build.
   exclude:
@@ -55,7 +53,19 @@ project:
       children:
         - file: topics/spatial-transcriptomics/Regulatory_genomics_example_spatial_transcriptomics_of_the_mouse_liver.ipynb
 
+    # ChIP-seq
+    - file: topics/chip-seq/index.md
+      children:
+        - file: topics/chip-seq/ChIP-seq.ipynb
+
+    # MPRA
+    - file: topics/mpra/index.md
+      children:
+        - file: topics/mpra/MPRA_part_1_reads_to_counts.ipynb
+        - file: topics/mpra/MPRA_part_2_activity_and_interpretation.ipynb
+
 site:
   template: book-theme
   options:
+    logo_text: Regulatory genomics   # text at the top left of every page (links to the home page)
     folders: true   # URLs follow the folder structure, e.g. /topics/bulk-rna-seq/
