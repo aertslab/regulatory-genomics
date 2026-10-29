@@ -38,4 +38,5 @@ project:
 site:
   template: book-theme
   options:
+    logo_text: Regulatory genomics   # text at the top left of every page (links to the home page)
     folders: true   # URLs follow the folder structure, e.g. /topics/bulk-rna-seq/
