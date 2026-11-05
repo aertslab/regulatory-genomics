@@ -14,6 +14,8 @@ This website contains the practicals of the course regulatory genomics. Each top
 
 - [MPRA](topics/mpra/index.md): which accessible regions of the mouse liver are active enhancers, and which transcription factor motifs make them active? From sequencing reads to barcode counts, enhancer activity (DESeq2) and the effect of mutating transcription factor binding sites.
 
+- [s2f model training](topics/s2f-model-training/index.md): how do we understand what regulatory code is underlying our enhancer accessibility? We train a s2f deep learning model on our data to predict accessibility from the genomic sequence.
+
 - [Enhancer code](topics/enhancer-code/index.md): which transcription factor binding sites make an enhancer active in one brain cell type and not another? Using a deep learning model to read the regulatory code from DNA sequence, and to design synthetic enhancers.
 
 ## How to use these notebooks
