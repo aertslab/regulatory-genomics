@@ -1,6 +1,6 @@
 # s2f model training
 
-In this practical we learn how to train and use **sequence-to-function** models. Sequence-to-function models take the DNA sequence as input and predict some kind of 'function' of that sequence, such as scATAC-seq data. Training and investigating such models provides valuable insides into how our genomes work in different cell types.
+In this practical we learn how to train and use **sequence-to-function** models. Sequence-to-function models take the DNA sequence as input and predict some kind of 'function' of that sequence, such as scATAC-seq data. Training and investigating such models provides valuable insights into how our genomes work in different cell types.
 
 > Zemke NR, Armand EJ, Wang W, et al. *Conserved and divergent gene regulatory programs of the mammalian neocortex.* Nature (2023) 624:390–402. https://doi.org/10.1038/s41586-023-06819-6
 
