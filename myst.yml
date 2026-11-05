@@ -12,7 +12,10 @@ project:
     - archive/**
     - tools/**
     - topics/*/data/**
+    - topics/*/course_data/**
+    - topics/*/course_data_build/**
     - topics/*/scripts/**
+    - topics/*/envs/**
     - README.md
     - CLAUDE.md
 
@@ -25,10 +28,25 @@ project:
         - file: topics/bulk-rna-seq/part_1_reads_to_counts.ipynb
         - file: topics/bulk-rna-seq/part_2_differential_expression.ipynb
 
+    # Bulk ATAC-seq
+    - file: topics/bulk-atac-seq/index.md
+      children:
+        - file: topics/bulk-atac-seq/part_1_reads_to_peaks.ipynb
+        - file: topics/bulk-atac-seq/part_2_consensus_peaks_macs_diff.ipynb
+        - file: topics/bulk-atac-seq/part_3_diffbind_deseq2.ipynb
+
     # Single-nucleus RNA-seq
     - file: topics/single-nucleus-rna-seq/index.md
       children:
         - file: topics/single-nucleus-rna-seq/Regulatory_genomics_example_single_nucleus_RNA_seq_of_the_mouse_liver.ipynb
+
+    # Single-cell ATAC-seq
+    - file: topics/single-cell-atac-seq/index.md
+      children:
+        - file: topics/single-cell-atac-seq/part_1_qc_preprocessing.ipynb
+        - file: topics/single-cell-atac-seq/part_2_pycistopic.ipynb
+        - file: topics/single-cell-atac-seq/part_3_snapatac2.ipynb
+        - file: topics/single-cell-atac-seq/part_4_dars.ipynb
 
     # Spatial transcriptomics
     - file: topics/spatial-transcriptomics/index.md

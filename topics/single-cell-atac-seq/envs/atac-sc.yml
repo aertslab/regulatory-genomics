@@ -1,0 +1,30 @@
+# Same packages as the mamba create and pip install commands at the start of part 1 (keep the two in sync).
+name: atac-sc
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - pip
+  - ipykernel
+  - openjdk=17
+  - macs3
+  - bedtools
+  - scanpy
+  - leidenalg
+  - umap-learn
+  - harmonypy=0.0.10   # 2.x changed the output shape; snapatac2 2.8 and pycisTopic expect 0.0.x
+  - pyranges
+  - pybigwig
+  - pyarrow
+  - polars
+  - matplotlib
+  - seaborn
+  - pip:
+      - "setuptools<81"   # pycisTopic and pyranges import pkg_resources
+      - "zarr<3"          # zarr 3 needs numpy>=2; pycisTopic keeps numpy 1.26
+      - scrublet
+      - ipywidgets        # progress bars in notebooks
+      - "matplotlib-inline==0.1.7"   # 0.2 needs matplotlib >= 3.7; pycisTopic keeps 3.6
+      - snapatac2
+      - git+https://github.com/aertslab/pycisTopic
