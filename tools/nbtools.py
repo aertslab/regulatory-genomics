@@ -4,6 +4,7 @@ Cells tagged "skip-execution" contain long-running commands (full download,
 full alignment). These are run separately with the same commands and are not
 re-executed when the notebook is executed.
 """
+import os
 import re
 import sys
 import nbformat as nbf
@@ -11,6 +12,9 @@ from nbclient import NotebookClient
 
 SKIP = "skip-execution"
 ANSI = re.compile(r"\x1b\[[0-9;]*[A-Za-z]")
+# absolute paths of the machine the notebook was executed on (home directory,
+# conda environments) should not end up in the committed outputs
+HOME = re.compile(re.escape(os.path.expanduser("~")) + r"\S*")
 
 
 def md(src):
@@ -62,5 +66,7 @@ def execute(nb, cwd, timeout=7200):
             client.execute_cell(cell, i)
             for o in cell.outputs:  # strip terminal colour codes (ls/grep aliases)
                 if o.output_type == "stream":
-                    o.text = ANSI.sub("", o.text)
+                    o.text = HOME.sub("<path>", ANSI.sub("", o.text))
+                elif o.output_type == "error":
+                    o.traceback = [HOME.sub("<path>", t) for t in o.traceback]
     return nb
