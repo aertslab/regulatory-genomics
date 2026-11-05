@@ -45,11 +45,17 @@ project:
       children:
         - file: topics/mpra/MPRA_part_1_reads_to_counts.ipynb
         - file: topics/mpra/MPRA_part_2_activity_and_interpretation.ipynb
+
     # Enhancer code
     - file: topics/enhancer-code/index.md
       children:
         - file: topics/enhancer-code/part_1_regulatory_code.ipynb
         - file: topics/enhancer-code/part_2_enhancer_design.ipynb
+    
+    # s2f model training
+    - file: topics/s2f-model-training/index.md
+      children:
+        - file: topics/s2f-model-training/sequence_to_function_model_with_crested.ipynb
 
 site:
   template: book-theme
