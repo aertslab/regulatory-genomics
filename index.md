@@ -14,6 +14,8 @@ This website contains the practicals of the course regulatory genomics. Each top
 
 - [MPRA](topics/mpra/index.md): which accessible regions of the mouse liver are active enhancers, and which transcription factor motifs make them active? From sequencing reads to barcode counts, enhancer activity (DESeq2) and the effect of mutating transcription factor binding sites.
 
+- [Enhancer code](topics/enhancer-code/index.md): which transcription factor binding sites make an enhancer active in one brain cell type and not another? Using a deep learning model to read the regulatory code from DNA sequence, and to design synthetic enhancers.
+
 ## How to use these notebooks
 
 The notebooks are meant to be read and run in your own time. Each topic page explains which software you need and how to install it. Some steps (downloading the data, aligning reads) take a long time, the expected run time is mentioned in the notebooks.
