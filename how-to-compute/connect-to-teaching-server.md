@@ -1,6 +1,14 @@
 # Connecting to the Server
 
-## Linux
+## A. Connect via browser directly in jupyter
+
+### Go to https://jupyter.gbiomed.kuleuven.be/hub/
+
+Fill in your r number and KUL (toledo) password
+
+---
+
+## B. Terminal - Linux
 
 ### 1. Open or create your SSH config file (create a file by opening an unexisting file with nano)
 
@@ -57,7 +65,7 @@ ssh gbw-s-bmw03
 
 ---
 
-## macOS
+## C. Terminal - MACOS
 
 As in Linux, paste the config block above into `~/.ssh/config` (change it to your r-number!).
 
@@ -89,7 +97,7 @@ ssh gbw-s-bmw03
 
 ---
 
-## Windows
+## D. Terminal - Windows
 
 Send us an email if the above don't work.
 
