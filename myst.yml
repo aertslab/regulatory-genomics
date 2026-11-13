@@ -68,7 +68,8 @@ project:
     - file: topics/s2f-model-training/index.md
       children:
         - file: topics/s2f-model-training/sequence_to_function_model_with_crested.ipynb
-        
+        - file: topics/s2f-model-training/sequence_to_function_model_with_chrombpnet.ipynb
+
     # Enhancer code
     - file: topics/enhancer-code/index.md
       children:

@@ -1,0 +1,22 @@
+# ChromBPNet 1.0.1, for training (scripts) and for the notebook. ChromBPNet pins TensorFlow 2.8, hence Python 3.10 and
+# CUDA 11.2; TensorFlow 2.8 only supports GPUs up to the A100 (on newer GPUs it silently runs on the CPU).
+# bedtools and samtools come from the cluster modules (module load SAMtools/1.18-GCC-12.3.0 BEDTools/2.31.0-GCC-12.3.0).
+#     conda env create --solver=libmamba -f envs/chrombpnet.yml
+name: chrombpnet
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - pip
+  - cudatoolkit=11.2
+  - cudnn=8.1
+  - htslib
+  - ucsc-bedgraphtobigwig
+  - ucsc-bigwigtobedgraph
+  - meme            # tomtom, used by the TF-MoDISco report
+  - ipykernel
+  - pip:
+      - chrombpnet==1.0.1
+      - numpy<1.24  # deepdish (used by chrombpnet) still uses np.object, removed in numpy 1.24
+      - pyBigWig    # used by chrombpnet, but not in its requirements

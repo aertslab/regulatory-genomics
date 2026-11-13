@@ -1,0 +1,12 @@
+# Tools to build the course data of the ChromBPNet notebook (download, alignment, peaks).
+# samtools and bedtools come from the cluster modules (module load SAMtools/1.18-GCC-12.3.0 BEDTools/2.31.0-GCC-12.3.0).
+name: chrombpnet-prep
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - sra-tools>=3
+  - chromap
+  - macs3
+  - htslib
