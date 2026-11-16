@@ -8,15 +8,15 @@ Fill in your r number and KUL (toledo) password
 
 ---
 
-## B. Terminal - Linux
+## B. Terminal
 
-### 1. Open or create your SSH config file (create a file by opening an unexisting file with nano)
+### Open or create your SSH config file (create a file by opening an unexisting file with nano)
 
 ```bash
 nano ~/.ssh/config
 ```
 
-### 2. Paste the following into that file
+### Paste the following into that file
 
 ```ssh-config
 Host gbw-s-* !jump-s.icts.kuleuven.be
@@ -32,75 +32,103 @@ Host gbw-s-bmw0*
 > **Note:** Replace `rXXXXXXX` with your own r-number.
 > **Note:** VSC users should already have something in their ssh config
 
-### 3. Download kmk (used for connecting to the server)
+
+### 1. linux
+
+
+#### Download kmk (used for connecting to the server)
 
 ```bash
-wget -O kmk https://repo.icts.kuleuven.be/artifactory/icts-p-lnx-generic-local/go/kmk/latest/kmk
+curl -s -o kmk https://repo.icts.kuleuven.be/artifactory/icts-p-lnx-generic-local/go/kmk/latest/kmk
 ```
 
-### 4. Set up
+#### running permissions
+
+```bash
+chmod 755 kmk
+```
+
+#### Run kmk
 
 ```bash
 eval $(ssh-agent)
-export KMK_USER="rXXXXXXX"
-```
-
-### 5. Give kmk running permissions
-
-```bash
-chmod u+x kmk
-```
-
-### 6. Run kmk
-
-```bash
+export KMK_USER="your r-number"
 ./kmk
 ```
 
-### 7. Connect
+#### sanity check
+
+```bash
+## this should not return an error or empty line
+ssh-add -l
+```
+
+#### Connect
 
 ```bash
 ssh gbw-s-bmw03
+### alternative if above does not work:
+ssh rXXXXXXX@gbw-s-bmw03
 ```
+
+if prompted for password (KU Leuven password)
 
 ---
 
-## C. Terminal - MACOS
+### 2. Terminal - MACOS
 
 As in Linux, paste the config block above into `~/.ssh/config` (change it to your r-number!).
 
 The easiest way forward is to download your kmk from the [KU Leuven SSH certificates page](https://admin.kuleuven.be/icts/services/ssh-cert/ssh-certificates-for-linux-mac#autotoc-item-autotoc-2).
 
 ```bash
-wget https://admin.kuleuven.be/icts/services/ssh-cert/kmk-darwin-arm64 # MACOS M1/2/3/4
-wget https://admin.kuleuven.be/icts/services/ssh-cert/kmk-darwin-amd64 # MACOS Intel
-wget https://admin.kuleuven.be/icts/services/ssh-cert/kmk              # Linux
+## macOS with INTEL processor
+curl -s -o kmk https://repo.icts.kuleuven.be/artifactory/icts-p-lnx-generic-local/go/kmk/latest/kmk-darwin-amd64
 ```
-
-### 1. Change permissions
 
 ```bash
-chmod +x kmk-darwin-arm64
+## macOS with M(ARM) processor
+curl -s -o kmk https://repo.icts.kuleuven.be/artifactory/icts-p-lnx-generic-local/go/kmk/latest/kmk-darwin-arm64
 ```
 
-### 2. Run kmk
+#### Change permissions
 
 ```bash
-./kmk-darwin-arm64
+chmod 755 kmk
 ```
 
-### 3. Connect
+#### Run kmk
+
+```bash
+eval $(ssh-agent)
+export KMK_USER="your r-number"
+./kmk
+```
+
+#### sanity check
+
+```bash
+## this should not return an error or empty line
+ssh-add -l
+```
+
+#### Connect
 
 ```bash
 ssh gbw-s-bmw03
+
+### alternative if above does not work:
+ssh rXXXXXXX@gbw-s-bmw03
 ```
+
+if prompted for password (KU Leuven password)
 
 ---
 
-## D. Terminal - Windows
+### 3. Terminal - Windows
 
 Send us an email if the above don't work.
 
 ---
 
-Written by Gert Hulselmans
+Written by Gert Hulselmans (updated by Anton De Brabandere)
