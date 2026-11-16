@@ -22,6 +22,13 @@ project:
   toc:
     - file: index.md
 
+    # How to compute
+    - file: how-to-compute/index.md
+      children:
+        - file: how-to-compute/connect-to-teaching-server.md
+        - file: how-to-compute/shelltutorial.ipynb
+        - file: how-to-compute/environment-and-kernel.ipynb
+
     # Bulk RNA-seq
     - file: topics/bulk-rna-seq/index.md
       children:
@@ -57,6 +64,12 @@ project:
     - file: topics/chip-seq/index.md
       children:
         - file: topics/chip-seq/ChIP-seq.ipynb
+
+    # PWM and CRM scanning
+    - file: topics/pwm-crm/index.md
+      children:
+        - file: topics/pwm-crm/pwm-scanning.ipynb
+        - file: topics/pwm-crm/crm-scanning.ipynb
 
     # MPRA
     - file: topics/mpra/index.md

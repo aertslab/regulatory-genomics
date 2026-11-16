@@ -2,6 +2,8 @@
 
 This website contains the practicals of the course regulatory genomics. Each topic consists of one or more Jupyter notebooks in which we analyse data from a published study, starting from the raw sequencing data.
 
+New to the command line or the teaching server? Start with [How to compute](how-to-compute/index.md): connecting to the server, a shell tutorial, and how to make your own environments and Jupyter kernels.
+
 ## Topics
 
 - [Bulk RNA-seq](topics/bulk-rna-seq/index.md): can the transcription factors FOXA1 and HNF4A activate liver genes in a blood cell line? From sequencing reads to differential expression and biological interpretation.
@@ -15,6 +17,8 @@ This website contains the practicals of the course regulatory genomics. Each top
 - [Spatial transcriptomics](topics/spatial-transcriptomics/index.md): how is gene expression organized within mouse liver tissue? Comparing Visium, MERFISH and Resolve Molecular Cartography to explore spatial expression patterns, image segmentation, liver zonation and spatial neighborhoods.
 
 - [ChIP-seq](topics/chip-seq/index.md): where does the transcription factor CEBPA bind in the human liver? From sequencing reads to peak calling, motif analysis and gene ontology enrichment, and a comparison with active enhancers (H3K27ac) in liver and spleen.
+
+- [PWM and CRM scanning](topics/pwm-crm/index.md): how many binding sites does a transcription factor motif predict, and how many of them are bound? Scanning the yeast genome with GAL4 and human chromosome 19 with CEBPA (FIMO), comparing the hits with ChIP-seq peaks, and finding clusters of motifs with Cluster-Buster.
 
 - [MPRA](topics/mpra/index.md): which accessible regions of the mouse liver are active enhancers, and which transcription factor motifs make them active? From sequencing reads to barcode counts, enhancer activity (DESeq2) and the effect of mutating transcription factor binding sites.
 
