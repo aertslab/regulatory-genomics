@@ -9,7 +9,6 @@ project:
 
   # Notebooks are rendered with their saved outputs, they are not executed during the build.
   exclude:
-    - archive/**
     - tools/**
     - topics/*/data/**
     - topics/*/course_data/**
@@ -28,12 +27,26 @@ project:
         - file: how-to-compute/connect-to-teaching-server.md
         - file: how-to-compute/shelltutorial.ipynb
         - file: how-to-compute/environment-and-kernel.ipynb
+        - file: how-to-compute/vsc.md
 
     # Bulk RNA-seq
     - file: topics/bulk-rna-seq/index.md
       children:
         - file: topics/bulk-rna-seq/part_1_reads_to_counts.ipynb
         - file: topics/bulk-rna-seq/part_2_differential_expression.ipynb
+
+
+    # Single-nucleus RNA-seq
+    - file: topics/single-nucleus-rna-seq/index.md
+      children:
+        - file: topics/single-nucleus-rna-seq/Regulatory_genomics_example_single_nucleus_RNA_seq_of_the_mouse_liver.ipynb
+
+
+    # ChIP-seq
+    - file: topics/chip-seq/index.md
+      children:
+        - file: topics/chip-seq/ChIP-seq.ipynb
+
 
     # Bulk ATAC-seq
     - file: topics/bulk-atac-seq/index.md
@@ -42,10 +55,6 @@ project:
         - file: topics/bulk-atac-seq/part_2_consensus_peaks_macs_diff.ipynb
         - file: topics/bulk-atac-seq/part_3_diffbind_deseq2.ipynb
 
-    # Single-nucleus RNA-seq
-    - file: topics/single-nucleus-rna-seq/index.md
-      children:
-        - file: topics/single-nucleus-rna-seq/Regulatory_genomics_example_single_nucleus_RNA_seq_of_the_mouse_liver.ipynb
 
     # Single-cell ATAC-seq
     - file: topics/single-cell-atac-seq/index.md
@@ -55,21 +64,12 @@ project:
         - file: topics/single-cell-atac-seq/part_3_snapatac2.ipynb
         - file: topics/single-cell-atac-seq/part_4_dars.ipynb
 
+
     # Spatial transcriptomics
     - file: topics/spatial-transcriptomics/index.md
       children:
         - file: topics/spatial-transcriptomics/Regulatory_genomics_example_spatial_transcriptomics_of_the_mouse_liver.ipynb
 
-    # ChIP-seq
-    - file: topics/chip-seq/index.md
-      children:
-        - file: topics/chip-seq/ChIP-seq.ipynb
-
-    # PWM and CRM scanning
-    - file: topics/pwm-crm/index.md
-      children:
-        - file: topics/pwm-crm/pwm-scanning.ipynb
-        - file: topics/pwm-crm/crm-scanning.ipynb
 
     # MPRA
     - file: topics/mpra/index.md
@@ -77,18 +77,38 @@ project:
         - file: topics/mpra/MPRA_part_1_reads_to_counts.ipynb
         - file: topics/mpra/MPRA_part_2_activity_and_interpretation.ipynb
 
+
+    # PWM and CRM scanning
+    - file: topics/pwm-crm/index.md
+      children:
+        - file: topics/pwm-crm/pwm-scanning.ipynb
+        - file: topics/pwm-crm/crm-scanning.ipynb
+
+
     # s2f model training
     - file: topics/s2f-model-training/index.md
       children:
         - file: topics/s2f-model-training/sequence_to_function_model_with_crested.ipynb
         - file: topics/s2f-model-training/sequence_to_function_model_with_chrombpnet.ipynb
 
+
     # Enhancer code
     - file: topics/enhancer-code/index.md
       children:
         - file: topics/enhancer-code/part_1_regulatory_code.ipynb
         - file: topics/enhancer-code/part_2_enhancer_design.ipynb
-    
+
+    # Old projects from former students
+    - file: archive/old_examples/index.md
+      children:
+        - file: archive/old_examples/bulk_RNA_seq_part_1.ipynb
+        - file: archive/old_examples/bulk_RNA_seq_part_2.ipynb
+        - file: archive/old_examples/bulk_ATAC_MASLD_part_1_reads_to_peaks.ipynb
+        - file: archive/old_examples/bulk_ATAC_MASLD_part_2_consensus_peaks_macs_diff.ipynb
+        - file: archive/old_examples/bulk_ATAC_MASLD_part_3_diffbind_deseq2.ipynb
+        - file: archive/old_examples/ATAC-seq_doxorubicin.ipynb
+        - file: archive/old_examples/ATAC-seq_nutlin.ipynb
+        - file: archive/old_examples/pycistopic_tutorial_PBMCs.ipynb
 
 
 site:

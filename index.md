@@ -8,23 +8,25 @@ New to the command line or the teaching server? Start with [How to compute](how-
 
 - [Bulk RNA-seq](topics/bulk-rna-seq/index.md): can the transcription factors FOXA1 and HNF4A activate liver genes in a blood cell line? From sequencing reads to differential expression and biological interpretation.
 
-- [Bulk ATAC-seq](topics/bulk-atac-seq/index.md): which regions do the liver transcription factors FOXA1 and HNF4A open in a blood cell line (the study of the bulk RNA-seq practical)? From sequencing reads to peaks, quality control, consensus peaks, differential accessibility with replicates (MACS3, DiffBind, DESeq2), motifs (HOMER) and the link with gene expression.
-
 - [Single-nucleus RNA-seq](topics/single-nucleus-rna-seq/index.md): how can we identify the different cell populations of the mouse liver and investigate hepatocyte transcriptional heterogeneity? From gene-expression counts to quality control, clustering, cell-type annotation and liver zonation.
+
+- [ChIP-seq](topics/chip-seq/index.md): where does the transcription factor CEBPA bind in the human liver? From sequencing reads to peak calling, motif analysis and gene ontology enrichment, and a comparison with active enhancers (H3K27ac) in liver and spleen.
+
+- [Bulk ATAC-seq](topics/bulk-atac-seq/index.md): which regions do the liver transcription factors FOXA1 and HNF4A open in a blood cell line (the study of the bulk RNA-seq practical)? From sequencing reads to peaks, quality control, consensus peaks, differential accessibility with replicates (MACS3, DiffBind, DESeq2), motifs (HOMER) and the link with gene expression.
 
 - [Single-cell ATAC-seq](topics/single-cell-atac-seq/index.md): can liver cell types and hepatocyte zonation be recovered from chromatin accessibility alone? Quality control, consensus peaks, topic modelling (pycisTopic), spectral embedding (SnapATAC2) and differentially accessible regions.
 
 - [Spatial transcriptomics](topics/spatial-transcriptomics/index.md): how is gene expression organized within mouse liver tissue? Comparing Visium, MERFISH and Resolve Molecular Cartography to explore spatial expression patterns, image segmentation, liver zonation and spatial neighborhoods.
 
-- [ChIP-seq](topics/chip-seq/index.md): where does the transcription factor CEBPA bind in the human liver? From sequencing reads to peak calling, motif analysis and gene ontology enrichment, and a comparison with active enhancers (H3K27ac) in liver and spleen.
+- [MPRA](topics/mpra/index.md): which accessible regions of the mouse liver are active enhancers, and which transcription factor motifs make them active? From sequencing reads to barcode counts, enhancer activity (DESeq2) and the effect of mutating transcription factor binding sites.
 
 - [PWM and CRM scanning](topics/pwm-crm/index.md): how many binding sites does a transcription factor motif predict, and how many of them are bound? Scanning the yeast genome with GAL4 and human chromosome 19 with CEBPA (FIMO), comparing the hits with ChIP-seq peaks, and finding clusters of motifs with Cluster-Buster.
-
-- [MPRA](topics/mpra/index.md): which accessible regions of the mouse liver are active enhancers, and which transcription factor motifs make them active? From sequencing reads to barcode counts, enhancer activity (DESeq2) and the effect of mutating transcription factor binding sites.
 
 - [s2f model training](topics/s2f-model-training/index.md): how do we understand what regulatory code is underlying our enhancer accessibility? We train a s2f deep learning model on our data to predict accessibility from the genomic sequence.
 
 - [Enhancer code](topics/enhancer-code/index.md): which transcription factor binding sites make an enhancer active in one brain cell type and not another? Using a deep learning model to read the regulatory code from DNA sequence, and to design synthetic enhancers.
+
+- [Old projects from former students](archive/old_examples/index.md): notebooks from previous years of the course (bulk RNA-seq, bulk ATAC-seq and single-cell ATAC-seq). They are kept as extra examples and are no longer maintained.
 
 ## How to use these notebooks
 

@@ -28,7 +28,7 @@ ChromBPNet needs older package versions (TensorFlow 2.8) and gets its own enviro
 | S2F with CREsted | `regulatory_genomics_enhancers` | Python (regulatory_genomics_enhancers) |
 | S2F with ChromBPNet | `chrombpnet` | Python (chrombpnet) |
 
-To be able to train models, you will need a GPU as it just takes too much time with a CPU. Inference tasks can usually be done on a CPU, though for big amounts of data that could also be quite time consuming.
+To be able to train models, you will need a GPU as it just takes too much time with a CPU. The teaching server has no GPUs; students with a VSC account can use the reserved GPU nodes, see [Using the VSC](../../how-to-compute/vsc.md). Inference tasks can usually be done on a CPU, though for big amounts of data that could also be quite time consuming.
 
 ## Data
 
