@@ -9,6 +9,7 @@ myst.yml                  Jupyter Book configuration (table of contents, exclude
 index.md                  landing page of the website
 .github/workflows/        GitHub Action that builds and deploys the website
 tools/nbtools.py          helpers to build and execute notebooks from Python scripts
+how-to-compute/           how to connect to our compute infrastructure/ shell tutorial and how to setup envs and kernels
 topics/<topic>/           one folder per topic
     index.md              topic overview (paper, data, software)
     *.ipynb               the notebooks (with saved outputs)
