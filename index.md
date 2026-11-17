@@ -26,8 +26,10 @@ New to the command line or the teaching server? Start with [How to compute](how-
 
 - [Enhancer code](topics/enhancer-code/index.md): which transcription factor binding sites make an enhancer active in one brain cell type and not another? Using a deep learning model to read the regulatory code from DNA sequence, and to design synthetic enhancers.
 
-- [Old projects from former students](archive/old_examples/index.md): notebooks from previous years of the course (bulk RNA-seq, bulk ATAC-seq and single-cell ATAC-seq). They are kept as extra examples and are no longer maintained.
-
 ## How to use these notebooks
 
 The notebooks are meant to be read and run in your own time. Each topic page explains which software you need and how to install it. Some steps (downloading the data, aligning reads) take a long time, the expected run time is mentioned in the notebooks.
+
+## Old projects
+
+[Old projects from former students](archive/old_examples/index.md): notebooks from previous years of the course (bulk RNA-seq, bulk ATAC-seq and single-cell ATAC-seq). They are kept as extra examples and are no longer maintained.

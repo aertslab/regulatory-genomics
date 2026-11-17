@@ -4,29 +4,38 @@ The teaching server only has CPUs. If you need a **GPU**, for example to train a
 
 ## Reserved nodes and credits
 
-During the practical sessions, CPU and GPU nodes are reserved for this course. The compute time is paid from the course's credit account. Add these two options to every job you submit:
+During the practical sessions, CPU and GPU nodes are reserved for this course. Each session has its own reservation, one for the CPU nodes and one for the GPU nodes:
+
+| Session | CPU nodes | GPU nodes |
+|---|---|---|
+| 24/11, 14–16h | `course_I0U29a_1` | `course_I0U29a_1_gpu` |
+| 26/11, 11–13h | `course_I0U29a_2` | `course_I0U29a_2_gpu` |
+| 1/12, 14–16h | `course_I0U29a_3` | `course_I0U29a_3_gpu` |
+| 8/12, 14–16h | `course_I0U29a_4` | `course_I0U29a_4_gpu` |
+
+Pick the reservation of the current session: the `_gpu` one if you need a GPU, the other one if CPUs are enough. The compute time is paid from the course's credit account. Add these two options to every job you submit (the examples below use the GPU reservation of the first session):
 
 ```bash
---reservation course_I0U29a_1      # the nodes reserved for the course (only during the sessions)
+--reservation course_I0U29a_1_gpu  # the nodes reserved for the course (only during the session)
 -A lp_edu_comparativegenomics      # the course's credit account
 ```
 
 - **Batch job**: put the options in the header of your job script:
 
   ```bash
-  #SBATCH --reservation=course_I0U29a_1
+  #SBATCH --reservation=course_I0U29a_1_gpu
   #SBATCH -A lp_edu_comparativegenomics
   ```
 
 - **Interactive job** (`srun`/`salloc`): add the options to the command, for example:
 
   ```bash
-  srun --reservation=course_I0U29a_1 -A lp_edu_comparativegenomics --gpus-per-node=1 --pty bash -l
+  srun --reservation=course_I0U29a_1_gpu -A lp_edu_comparativegenomics --gpus-per-node=1 --pty bash -l
   ```
 
-- **Jupyter through Open OnDemand** ([ondemand.hpc.kuleuven.be](https://ondemand.hpc.kuleuven.be)): when you start an interactive app (JupyterLab), fill in `lp_edu_comparativegenomics` as the account and `course_I0U29a_1` as the reservation. Ask for a GPU only if your notebook needs one.
+- **Jupyter through Open OnDemand** ([ondemand.hpc.kuleuven.be](https://ondemand.hpc.kuleuven.be)): when you start an interactive app (JupyterLab), fill in `lp_edu_comparativegenomics` as the account and the reservation of the current session as the reservation. Use the `_gpu` reservation and ask for a GPU only if your notebook needs one.
 
-The reservation only exists during the sessions. Outside the sessions, leave out `--reservation` and your job waits in the normal queue.
+A reservation only exists during its session. Outside the sessions, leave out `--reservation` and your job waits in the normal queue.
 
 Use the credits fairly: stop interactive sessions and Jupyter servers when you are done, and only ask for a GPU when you are training a model.
 
